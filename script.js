@@ -6,11 +6,14 @@ function createGrid() {
   const sideSize = getSideSize();
 
   clearGrid();
-  for (let i = 0; i < sideSize; i++) {
+  for (let i = 0; i < sideSize * sideSize; i++) {
     let gridElement = document.createElement("div");
     gridElement.className = "gridElement";
     grid.appendChild(gridElement);
   }
+
+  grid.style.gridTemplateColumns = `repeat(${sideSize}, minmax(1px, 1fr))`;
+  grid.style.gridTemplateRows = `repeat(${sideSize}, minmax(1px, 1fr))`;
 }
 
 function clearGrid() {
