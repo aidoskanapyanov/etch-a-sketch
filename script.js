@@ -8,6 +8,7 @@ const colorBtn = document.getElementById("colorBtn");
 
 let eraserIsOn = false;
 let colorModeIsOn = true;
+colorBtn.classList.add("active");
 
 function toggleEraser() {
   if (!eraserIsOn) {
