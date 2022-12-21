@@ -30,6 +30,27 @@
 #eraserBtn,
 #colorBtn {
     padding: 10px 15px;
+    margin: 0px 5px;
+}
+
+#clearBtn:active,
+#trainBtn:active,
+#predictBtn:active,
+#eraserBtn:active,
+#colorBtn:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    box-shadow: 0px 1px 0px 0px;
+}
+
+#clearBtn:hover,
+#trainBtn:hover,
+#predictBtn:hover,
+#eraserBtn:hover,
+#colorBtn:hover {
+    /* background-color: #000; */
+    /*  Making button bigger on hover  */
+    transform: scale(1.1) perspective(1px)
 }
 
 .colored {
