@@ -16,6 +16,9 @@ function createGrid() {
   for (let i = 0; i < sideSize * sideSize; i++) {
     let gridElement = document.createElement("div");
     gridElement.className = "gridElement";
+    gridElement.ondragstart = () => {
+      return false;
+    };
     gridElement.addEventListener("mouseover", makeBlack);
     grid.appendChild(gridElement);
   }
