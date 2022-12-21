@@ -4,7 +4,9 @@ const grid = document.getElementById("grid");
 const clearBtn = document.getElementById("clearBtn");
 
 function makeBlack(event) {
-  event.target.style.backgroundColor = "black";
+  if (event.buttons == 1 || event.buttons == 3) {
+    event.target.style.backgroundColor = "black";
+  }
 }
 
 function createGrid() {
