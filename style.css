@@ -1,9 +1,14 @@
+body {
+    margin: 0px;
+}
+
 * {
     font-family: 'Roboto Mono', serif;
 }
 
 h1 {
-    font-size: 48px;
+    font-size: 64px;
+    margin: 16px 0px;
 }
 
 .main {
@@ -13,7 +18,6 @@ h1 {
     align-items: center;
     height: 95vh;
     width: 95vw;
-    margin-top: 20px;
 }
 
 #grid {
