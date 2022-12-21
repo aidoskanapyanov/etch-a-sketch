@@ -24,6 +24,7 @@
     margin-bottom: 10px;
 }
 
-#clearBtn {
+#clearBtn,
+#trainBtn {
     padding: 10px 15px;
 }
