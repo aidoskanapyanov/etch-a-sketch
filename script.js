@@ -75,8 +75,8 @@ function getSideSize() {
 }
 
 function getUnpredicted() {
-  const IMAGE_WIDTH = 28;
-  const IMAGE_HEIGHT = 28;
+  const IMAGE_WIDTH = +getSideSize();
+  const IMAGE_HEIGHT = +getSideSize();
   const gridMatrix = Array.from(document.getElementsByClassName("gridElement")).map((el) => {
     return +el.classList.contains("colored");
   });
@@ -84,12 +84,16 @@ function getUnpredicted() {
   return tf.tensor([gridMatrix]).reshape([1, IMAGE_WIDTH, IMAGE_HEIGHT, 1]);
 }
 
+function resizeInputTo28By28(unpredicted) {
+  return tf.image.resizeBilinear(unpredicted, [28, 28]);
+}
+
 async function makePrediction() {
   const model = await tf.loadLayersModel("./model/my-model.json");
-  const unpredicted = getUnpredicted();
+  const unpredicted = resizeInputTo28By28(getUnpredicted());
   const prediction = model.predict(unpredicted).argMax(-1);
 
-  console.log(prediction.dataSync()[0]);
+  alert(`The number is recognized as: ${prediction.dataSync()[0]}`);
 }
 
 createGrid();
