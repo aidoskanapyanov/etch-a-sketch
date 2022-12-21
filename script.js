@@ -24,4 +24,5 @@ function getSideSize() {
   return sizeSlider.value;
 }
 
-sizeSlider.addEventListener("change", createGrid);
+createGrid();
+sizeSlider.addEventListener("input", createGrid);
