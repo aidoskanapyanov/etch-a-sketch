@@ -5,7 +5,7 @@ const clearBtn = document.getElementById("clearBtn");
 
 function makeBlack(event) {
   if (event.buttons == 1 || event.buttons == 3) {
-    event.target.style.backgroundColor = "black";
+    event.target.classList.add("colored");
   }
 }
 
