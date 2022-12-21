@@ -1,6 +1,11 @@
 const gridSideLength = 500;
 const sizeSlider = document.getElementById("sizeSlider");
 const grid = document.getElementById("grid");
+const clearBtn = document.getElementById("clearBtn");
+
+function makeBlack(event) {
+  event.target.style.backgroundColor = "black";
+}
 
 function createGrid() {
   const sideSize = getSideSize();
@@ -9,6 +14,7 @@ function createGrid() {
   for (let i = 0; i < sideSize * sideSize; i++) {
     let gridElement = document.createElement("div");
     gridElement.className = "gridElement";
+    gridElement.addEventListener("mouseover", makeBlack);
     grid.appendChild(gridElement);
   }
 
@@ -26,3 +32,4 @@ function getSideSize() {
 
 createGrid();
 sizeSlider.addEventListener("input", createGrid);
+clearBtn.addEventListener("click", createGrid);
