@@ -2,6 +2,7 @@ const gridSideLength = 500;
 const sizeSlider = document.getElementById("sizeSlider");
 const grid = document.getElementById("grid");
 const clearBtn = document.getElementById("clearBtn");
+const predictBtn = document.getElementById("predictBtn");
 
 function makeBlack(event) {
   if (event.buttons == 1 || event.buttons == 3) {
@@ -35,6 +36,27 @@ function getSideSize() {
   return sizeSlider.value;
 }
 
+function getUnpredicted() {
+  const IMAGE_WIDTH = 28;
+  const IMAGE_HEIGHT = 28;
+  const gridMatrix = Array.from(document.getElementsByClassName("gridElement")).map((el) => {
+    return +el.classList.contains("colored");
+  });
+
+  return tf.tensor([gridMatrix]).reshape([1, IMAGE_WIDTH, IMAGE_HEIGHT, 1]);
+}
+
+async function makePrediction() {
+  const model = await tf.loadLayersModel(
+    "https://storage.googleapis.com/tfjs-models/tfjs/mnist_transfer_cnn_v1/model.json"
+  );
+  const unpredicted = getUnpredicted();
+  const prediction = model.predict(unpredicted).argMax(-1);
+
+  console.log(prediction.dataSync()[0]);
+}
+
 createGrid();
 sizeSlider.addEventListener("input", createGrid);
 clearBtn.addEventListener("click", createGrid);
+predictBtn.addEventListener("click", makePrediction);

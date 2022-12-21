@@ -25,7 +25,8 @@
 }
 
 #clearBtn,
-#trainBtn {
+#trainBtn,
+#predictBtn {
     padding: 10px 15px;
 }
 
