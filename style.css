@@ -26,10 +26,17 @@
 
 #clearBtn,
 #trainBtn,
-#predictBtn {
+#predictBtn,
+#eraserBtn,
+#colorBtn {
     padding: 10px 15px;
 }
 
 .colored {
     background-color: black;
+}
+
+.active {
+    background-color: black;
+    color: white;
 }

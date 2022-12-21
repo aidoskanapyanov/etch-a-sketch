@@ -3,10 +3,47 @@ const sizeSlider = document.getElementById("sizeSlider");
 const grid = document.getElementById("grid");
 const clearBtn = document.getElementById("clearBtn");
 const predictBtn = document.getElementById("predictBtn");
+const eraserBtn = document.getElementById("eraserBtn");
+const colorBtn = document.getElementById("colorBtn");
+
+let eraserIsOn = false;
+let colorModeIsOn = true;
+
+function toggleEraser() {
+  if (!eraserIsOn) {
+    eraserIsOn = !eraserIsOn;
+    colorModeIsOn = false;
+    colorBtn.classList.remove("active");
+    eraserBtn.classList.add("active");
+  }
+}
+
+function toggleColorMode() {
+  if (!colorModeIsOn) {
+    colorModeIsOn = !colorModeIsOn;
+    eraserIsOn = false;
+    eraserBtn.classList.remove("active");
+    colorBtn.classList.add("active");
+  }
+}
 
 function makeBlack(event) {
   if (event.buttons == 1 || event.buttons == 3) {
     event.target.classList.add("colored");
+  }
+}
+
+function removeBlack(event) {
+  if (event.buttons == 1 || event.buttons == 3) {
+    event.target.classList.remove("colored");
+  }
+}
+
+function changeColor(event) {
+  if (eraserIsOn) {
+    removeBlack(event);
+  } else {
+    makeBlack(event);
   }
 }
 
@@ -20,7 +57,7 @@ function createGrid() {
     gridElement.ondragstart = () => {
       return false;
     };
-    gridElement.addEventListener("mouseover", makeBlack);
+    gridElement.addEventListener("mouseover", changeColor);
     grid.appendChild(gridElement);
   }
 
@@ -58,3 +95,5 @@ createGrid();
 sizeSlider.addEventListener("input", createGrid);
 clearBtn.addEventListener("click", createGrid);
 predictBtn.addEventListener("click", makePrediction);
+eraserBtn.addEventListener("click", toggleEraser);
+colorBtn.addEventListener("click", toggleColorMode);
