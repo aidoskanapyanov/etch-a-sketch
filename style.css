@@ -23,3 +23,7 @@
 .settings {
     margin-bottom: 10px;
 }
+
+#clearBtn {
+    padding: 10px 15px;
+}
