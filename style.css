@@ -2,6 +2,10 @@
     font-family: 'Roboto Mono', serif;
 }
 
+h1 {
+    font-size: 48px;
+}
+
 .main {
     display: flex;
     flex-direction: column;
