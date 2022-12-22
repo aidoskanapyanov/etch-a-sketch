@@ -43,8 +43,32 @@ function removeBlack(event) {
 function changeColor(event) {
   if (eraserIsOn) {
     removeBlack(event);
+    removeBlackTouchEvent(event);
   } else {
     makeBlack(event);
+    makeBlackTouchEvent(event);
+  }
+}
+
+function makeBlackTouchEvent(e) {
+  if (e.type == "touchmove") {
+    e.preventDefault();
+    const clientX = e.touches[0].clientX;
+    const clientY = e.touches[0].clientY;
+
+    const el = document.elementFromPoint(clientX, clientY);
+    el.classList.add("colored");
+  }
+}
+
+function removeBlackTouchEvent(e) {
+  if (e.type == "touchmove") {
+    e.preventDefault();
+    const clientX = e.touches[0].clientX;
+    const clientY = e.touches[0].clientY;
+
+    const el = document.elementFromPoint(clientX, clientY);
+    el.classList.remove("colored");
   }
 }
 
@@ -59,6 +83,8 @@ function createGrid() {
       return false;
     };
     gridElement.addEventListener("mouseover", changeColor);
+    gridElement.addEventListener("touchmove", changeColor);
+
     grid.appendChild(gridElement);
   }
 
