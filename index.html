@@ -15,21 +15,26 @@
   </head>
   <body>
     <div class="main">
-      <h1>Etch-a-sketch</h1>
+      <h1>MNIST-classifier</h1>
       <div class="settings">
-        <button id="predictBtn">Predict</button>
-        <button id="colorBtn">Color mode</button>
-        <button id="eraserBtn">Eraser</button>
-        <button id="clearBtn">Clear</button>
-        <input
-          id="sizeSlider"
-          type="range"
-          value="28"
-          min="16"
-          max="64"
-          oninput="this.nextElementSibling.value = this.value"
-        />
-        <output>28</output>
+        <div class="settingsButtons">
+          <button id="predictBtn">Classify</button>
+          <button id="colorBtn">Color mode</button>
+          <button id="eraserBtn">Eraser</button>
+          <button id="clearBtn">Clear</button>
+        </div>
+        <div class="sliderElements">
+          <span>Grid size</span>
+          <input
+            id="sizeSlider"
+            type="range"
+            value="28"
+            min="16"
+            max="64"
+            oninput="this.nextElementSibling.value = this.value"
+          />
+          <output>28</output>
+        </div>
       </div>
       <div id="grid"></div>
     </div>
