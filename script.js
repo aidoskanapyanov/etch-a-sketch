@@ -83,6 +83,7 @@ function createGrid() {
       return false;
     };
     gridElement.addEventListener("mouseover", changeColor);
+    gridElement.addEventListener("mousedown", changeColor);
     gridElement.addEventListener("touchmove", changeColor);
 
     grid.appendChild(gridElement);
